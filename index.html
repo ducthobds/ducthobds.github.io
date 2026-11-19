@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BỘ TÀI LIỆU MIỄN PHÍ TẶNG KHÁCH HÀNG – ĐỨC THỌ BĐS</title>
+<meta name="description" content="Quy hoạch, mặt bằng, bảng giá, chính sách bán hàng các dự án nổi bật – tổng hợp bởi Đức Thọ BĐS. Hotline/Zalo 096.182.5358.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BỘ TÀI LIỆU MIỄN PHÍ TẶNG KHÁCH HÀNG – ĐỨC THỌ BĐS">
+<meta property="og:description" content="Quy hoạch, mặt bằng, bảng giá, chính sách bán hàng các dự án nổi bật. Hotline/Zalo 096.182.5358.">
+<meta property="og:image" content="https://ducthobds.github.io/anh.jpg">
+<meta property="og:url" content="https://ducthobds.github.io/">
+<meta name="theme-color" content="#0b1a3a">
+<link rel="icon" href="anh.jpg">
+<style>
+  html,body{margin:0;height:100%;background:#0b1a3a;overflow:hidden}
+  #app{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#f4f6fb}
+  #load{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    background:#0b1a3a;color:#e8cf86;font:600 15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:opacity .3s}
+  #load img{width:84px;height:84px;border-radius:50%;border:3px solid #c9a54a;object-fit:cover}
+  #load .sp{width:28px;height:28px;border:3px solid rgba(232,207,134,.25);border-top-color:#e8cf86;border-radius:50%;animation:r 1s linear infinite}
+  @keyframes r{to{transform:rotate(360deg)}}
+  #load.hide{opacity:0;pointer-events:none}
+  #slow{display:none;position:fixed;left:12px;right:12px;bottom:14px;z-index:5;background:#fff;color:#0b1a3a;border-radius:12px;
+    padding:12px 14px;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.35);text-align:center}
+  #slow a{color:#0b1a3a;font-weight:700}
+</style>
+</head>
+<body>
+<iframe id="app" title="Đức Thọ BĐS" allow="clipboard-write"></iframe>
+<div id="load"><img src="anh.jpg" alt=""><div>Đức Thọ BĐS – Đang mở thư viện tài liệu…</div><div class="sp"></div></div>
+<div id="slow">Trang chưa hiện? <a id="direct" href="#" target="_top">Bấm vào đây để mở trực tiếp</a></div>
+<noscript><p style="color:#fff;padding:20px">Vui lòng bật JavaScript hoặc gọi 096.182.5358.</p></noscript>
+<script>
+(function () {
+  var EXEC = 'https://script.google.com/macros/s/AKfycbxuOAHmFwSU1b8Xb-Z7zXFOxBL4UZWqrUp4h6u8Cn8QD5qbjyTJZUD2l88ZDJl8qqDtmw/exec';
+  var target = EXEC + location.search;            // giữ nguyên ?p=, ?src=, ?page=dl&t=
+  var app = document.getElementById('app'), load = document.getElementById('load'), slow = document.getElementById('slow');
+  document.getElementById('direct').href = target;
+  app.src = target;
+  var ready = false;
+  function done() { if (ready) return; ready = true; load.className = 'hide'; slow.style.display = 'none'; }
+  // Dự phòng: nếu trang không tự báo sẵn sàng (mạng chậm, trình duyệt chặn) thì vẫn ẩn màn chờ và hiện link mở trực tiếp.
+  setTimeout(function () { load.className = 'hide'; }, 8000);
+  setTimeout(function () { if (!ready) slow.style.display = 'block'; }, 12000);
+  window.addEventListener('message', function (e) {
+    if (!/^https:\/\/([a-z0-9-]+\.)*(googleusercontent\.com|script\.google\.com)$/.test(e.origin)) return;
+    var d = e.data || {};
+    if (d.dtbds === 'ready') done();
+    if (d.dtbds === 'url' && typeof d.q === 'string' && /^(\?p=[a-z0-9-]{1,80})?$/.test(d.q)) {
+      done();
+      try { history.replaceState(null, '', location.pathname + d.q); } catch (err) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>
